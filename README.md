@@ -4,53 +4,53 @@ This is notes prep for cs1c object oriented programming
 by the end you should have a good grasp and understanding of OOP
 
 # content
-Review
+1. Review
 -code
 
-Classes/Inheritance
+2. Classes/Inheritance
 -code
 
-Operator Overloading
+3. Operator Overloading
 -code
 
-Pointers
+4. Pointers
 -code
 
-Recursion
+5. Recursion
 -code
 
-Polymorphism
+6. Polymorphism
 -code
 
-Exceptions
+7. Exceptions
 -code
 
-Casting
+8. Casting
 -code
 
-Templates
+9. Templates
 -code
 
-Stacks and Queues
+10. Stacks and Queues
 -code
 
-Vectors and Linked Lists
+11. Vectors and Linked Lists
 -code
 
-Testing 
+12. Testing 
 -code
 
-Agile Development and Tools
+13. Agile Development and Tools
 -code
 
-UML
+14. UML
 -code
 
-STL Containers and Iterators
+15. STL Containers and Iterators
 -code/assignment
 
-STL Algorithms
+16. STL Algorithms
 -code
 
-STL Functions, Objects, Searching, and Sorting
+17. STL Functions, Objects, Searching, and Sorting
 -final code
