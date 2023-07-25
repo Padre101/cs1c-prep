@@ -4,7 +4,53 @@ This is notes prep for cs1c object oriented programming
 by the end you should have a good grasp and understanding of OOP
 
 # content
-their will be 3 parts to this which are all based of my google drive cs1c notes
-1. My orginal notes which will cover random topics that i feel were fundamental like pointers
-2. My notes that covered the basics of OOP
-3. The actual topics that will be covered in CS1C
+Review
+-code
+
+Classes/Inheritance
+-code
+
+Operator Overloading
+-code
+
+Pointers
+-code
+
+Recursion
+-code
+
+Polymorphism
+-code
+
+Exceptions
+-code
+
+Casting
+-code
+
+Templates
+-code
+
+Stacks and Queues
+-code
+
+Vectors and Linked Lists
+-code
+
+Testing 
+-code
+
+Agile Development and Tools
+-code
+
+UML
+-code
+
+STL Containers and Iterators
+-code/assignment
+
+STL Algorithms
+-code
+
+STL Functions, Objects, Searching, and Sorting
+-final code
