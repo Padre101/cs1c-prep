@@ -1,6 +1,11 @@
 # Table of Contents
 1. [Header Files](#header-files)
 2. [Chrono Explained](#chrono-explained)
+3. [Pointer's and Dynamic Arrays](#pointers-and-dynamic-arrays)
+4. [Pointer's and Array's](#pointers-and-arrays)
+5. [C++ Text File's](#c++-text-files)
+6. [new and delete operator](#new-and-delete-operator)
+7. [Dynamoic Memory Allocation](#dynamic-memory-allocation)
 
 
 # Header Files
@@ -219,7 +224,7 @@ Always match each new with a delete and each new[] with a delete[] to avoid memo
 After using delete or delete[] on a pointer, it's a good practice to set the pointer to NULL to avoid dangling pointers:
 
 
-# Dynamoic Memory Allocation
+# Dynamic Memory Allocation
 
 In C++, dynamic memory allocation allows the programmer to allocate and deallocate memory during runtime. This is unlike standard arrays, which must have their size determined at compile time.
 
