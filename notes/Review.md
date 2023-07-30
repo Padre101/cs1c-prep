@@ -6,6 +6,7 @@
 5. [C++ Text File's](#c++-text-files)
 6. [new and delete operator](#new-and-delete-operator)
 7. [Dynamoic Memory Allocation](#dynamic-memory-allocation)
+8. [Linked List's](#linked-lists)
 
 
 # Header Files
@@ -125,7 +126,7 @@ This demonstrates how pointers can be used to access and manipulate arrays in C+
 
 Note: Remember, array indices in C++ start from 0, so numbers[2] or *(numbers + 2) refers to the third element, not the second.
 
-# C++ Text File's
+# C++ Text Files
 
 ifstream and ofstream are classes defined in the <fstream> library, and they are used to handle file input and output operations respectively.
 
@@ -337,7 +338,9 @@ The above example allows you to create a 2D array with a user-specified number o
 
 Note: As in the case of dynamic arrays, always be sure to check that memory allocation was successful before using the array. In real-world applications, it's always possible that the new operation could fail if there isn't enough memory available.
 
+# Linked Lists
 
+dkdn
 
 
 
