@@ -1,3 +1,22 @@
+# Table of Content's
+- [Classes](#classes)
+- [Access Levels Explained](#access-levels-explained-ex-public)
+- [Objects](#objects)
+- [Constructors/Destructors](#constructorsdestructors)
+- [Encapsulation](#encapsulation)
+- [Inheritance](#inheritance)
+- [Abstraction](#abstraction)
+- [Polymorphism](#polymorphism)
+- [Storage Duration and Scope in C++](#storage-duration-and-scope-in-c)
+- [Accessor/Mutator Functions](#accessormutator-functions)
+- [Constant Member Functions (Const Methods)](#constant-member-functions-const-methods)
+- [Abstract Data Types (ADT)](#abstract-data-types-adt)
+- [Inline Functions in C++](#inline-functions-in-c)
+- [Static Members](#static-membersmembers-are-variablefunction-in-classes)
+- [Class Invariants](#class-invariants)
+- [Namespace](#namespace)
+
+# Disclaimer
 This goes over the basics of OOP including classes, object, encapsulation, abstraction and inheritance , except for polymorphism which will have its own notes
 
 
@@ -116,7 +135,7 @@ Their useful when you would have to initialize multiple variables and object fro
 
 A non default constructor is called an alternate/overload constructor 
 
-# Default constructor
+## Default constructor
 
 When you create a class, a constructor is made by default. And the values of the attributes(variables) in my class are uninitialized in the default constructor. 
 
@@ -173,7 +192,7 @@ To instantiate an object of ClassName, you'd simply call the constructor and pas
 ClassName obj(arg1_value, arg2_value);
 ```
 
-# Destructor
+## Destructor
 Destructors are special member functions in C++ that are responsible for cleaning up resources allocated by an object when it goes out of scope or is explicitly destroyed. They are opposite to constructors, which initialize the object's state.
 
 The syntax for a destructor is exactly the same as a constructor, but their’s is a tilde(~) before the name.
@@ -421,7 +440,7 @@ accessSpecifier specifies the access level for the inherited members from the ba
 
 BaseClassName is the name of the base class from which the derived class is inheriting
 
-## abstraction
+# abstraction
  
 Abstraction refers to the process of hiding unnecessary details and presenting only essential information to the users or clients. and exposing only the essential aspects, providing a simplified view code.
 
@@ -435,7 +454,7 @@ different methods to the outside world without giving internal detail about thos
 
 Idk How to actually implement this in oop, ill add when i need to use it
 
-## polymorphism
+# polymorphism
 Polymorphism in C++ is the ability of objects of different classes, derived from a common base class, to be treated as objects of the base class. It allows you to write code that can work with objects of different classes interchangeably, providing a high degree of flexibility and code reusability.
 
 Idk How to actually implement this in oop, ill add when i need to use it; i just know you use pointers
