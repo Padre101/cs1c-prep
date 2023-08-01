@@ -530,11 +530,11 @@ This shows that the automatic variable is reset each time its function is called
 
 Here is an example:
 
-    ```c++
+```c++
     void someFunction() {
         int autoVar = 5;  // This is a variable with automatic storage duration
     }
-    ```
+```
 
 ### Static Storage Duration
 
