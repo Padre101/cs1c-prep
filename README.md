@@ -1,9 +1,9 @@
 # cs1c-prep 
-This is notes prep for cs1c object oriented programming
+This is notes for cs1c object oriented programming
 
 by the end you should have a good grasp and understanding of OOP
 
-# content
+# content(make it cs1c content)
 1. Review
 -code
 
