@@ -6,8 +6,7 @@
 5. [C++ Text Files](#c++-text-files)
 6. [new and delete operator](#new-and-delete-operator)
 7. [Dynamoic Memory Allocation](#dynamic-memory-allocation)
-8. [Linked List's](#linked-lists)
-9. [Review Notes in class](#review-notes-in-class)
+8. [Review Notes in class](#review-notes-in-class)
 
 
 # Header Files
