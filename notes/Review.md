@@ -3,10 +3,11 @@
 2. [Chrono Explained](#chrono-explained)
 3. [Pointer's and Dynamic Arrays](#pointers-and-dynamic-arrays)
 4. [Pointer's and Array's](#pointers-and-arrays)
-5. [C++ Text File's](#c++-text-files)
+5. [C++ Text Files](#c++-text-files)
 6. [new and delete operator](#new-and-delete-operator)
 7. [Dynamoic Memory Allocation](#dynamic-memory-allocation)
 8. [Linked List's](#linked-lists)
+9. [Review Notes in class](#review-notes-in-class)
 
 
 # Header Files
@@ -338,13 +339,276 @@ The above example allows you to create a 2D array with a user-specified number o
 
 Note: As in the case of dynamic arrays, always be sure to check that memory allocation was successful before using the array. In real-world applications, it's always possible that the new operation could fail if there isn't enough memory available.
 
-# Linked Lists
+# Review Notes in class
 
-dkdn
+## Memory
+
+Memory in computer science refers to devices that store data or programs either temporarily or permanently. RAM is a volatile type of memory. The word size, such as 32-bit or 64-bit, indicates how much data a CPU can process at once, and it may influence the size of instructions. However, instructions can vary in size. A single bit in memory represents either a 0 or 1, while a byte comprises 8 bits. On a 32-bit system, the direct addressable memory limit is 4 GB, which corresponds to 2^32 bytes of RAM.
+
+## Pointer
+I already have this so skips
+
+## Pointers, Arrays, and Pointer Arithmetic
+sdds
+# Pointers, Arrays, and Pointer Arithmetic
+
+- Assign a pointer to the first element in an array.
+- Access array elements by incrementing the pointer.
+
+## Example:
+
+```c++
+int main()
+{
+   
+    const int SIZE = 5;
+    int numbers[SIZE] = {6, 8, 9, 3, 7};
+    int *ptr;
+    
+    ptr = numbers; // Assigns the address of numbers[0] to ptr; // No & when assigning an array address.
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << *ptr << endl;
+        ptr++; // Increments the address of numbers[0] to numbers[1].
+               // Therefore, the address is incremented by 4, because integers are 4 bytes.
+    }
+    
+    return 0;
+}
+```
+
+## Pointers as Function Parameters
+
+- A pointer can be used as a function parameter.
+- When a pointer is passed to a function, the pointer holds an address of a variable that can be accessed by the function.
+- A pointer gives a function access to the original variable, much like a reference variable does.
+
+**Note**: When a variable is passed by reference, the reference variable acts as an alias to the original variable. This gives the function access to the original variable.
+
+- Generally, passing reference variables is easier than passing pointers as arguments.
+  - However, pointers to c_strings work well and are easy.
+
+```c++
+#include <iostream>
+using namespace std;
+
+void getName(char *);
+void displayName(char *);
+const int SIZE = 30;
+
+int main()
+{
+    char name[SIZE];
+    char* ptr = name; // The address of the first byte of the array is assigned to the pointer.
+    getName(ptr);
+    displayName(ptr);
+
+    return 0;
+}
+
+void getName(char* pName)
+{
+    cout << "Enter name:  ";
+    cin.getline(pName, SIZE);
+}
+
+void displayName(char* pName)
+{
+    cout << "Hi " << pName << ".\n";
+}
+
+/* OUTPUT:
+Enter name:  Tom Lee
+Hi Tom Lee.
+Press any key to continue */
+```
+
+## Array: Implicit Conversion to a Pointer
+
+When an array is passed to a function, there is an implicit conversion to a pointer. The memory address of the first byte is passed.
+
+```c++
+#include <iostream>
+using namespace std;
+
+void showNumbers(int numbers[], const int NUM_ITEMS);
+
+int main()	  
+{
+    const int SIZE = 3;
+    int numbers[SIZE] = {5,6,7}; // The base address (e.g., AB1234F1) is passed to the function.
+    showNumbers(numbers, SIZE);
+    return 0; // A value of 3 is passed to the function.                                  
+}
+
+void showNumbers(int values[], const int NUM_ITEMS)
+{
+    for (int i = 0; i < NUM_ITEMS; i++)
+    {
+        cout << values[i] << endl;
+    }
+}
+```
+For the array int numbers[SIZE] = {5,6,7};:
+
+The base address (e.g., AB1234F1) is the memory address of the first byte of the array.
+
+AB1234F1  00000101    // 5 = 00000000000000000000000000000101
+AB1234F2  00000000      
+AB1234F3  00000000  
+AB1234F4  00000000  
+AB1234F5  00000110    // 6 = 00000000000000000000000000000110
+AB1234F6  00000000	    
+AB1234F7  00000000	
+AB1234F8  00000000	
+AB1234F9  00000111    // 7 = 00000000000000000000000000000111
+AB1234FA  00000000      
+AB1234FB  00000000    
+AB1234FC  00000000  
+
+This visualization shows how the integer array occupies memory, assuming a 32-bit architecture where each integer takes up 4 bytes.
+
+## Range based for loop
+
+The **for-each loop** (also known as a range-based for loop) was introduced in 2011. It provides an alternative way to iterate through every element in an array (or other list-type structures).
+
+The for-each loop allows for swift access to array elements without the need for initialization, testing, or increment/decrement. Essentially, a for-each loop acts on every array element, rather than performing an action `n` times.
+
+### Advantages of For-each Loop:
+1. Enhances code readability.
+2. Minimizes the risk of programming errors.
+
+#### Syntax
+The general format is: `variable : array`
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float testScores[5] = { 92.5, 77.0, 88.0, 93.5, 81.0 };
+
+    for (float score : testScores) 	// iterate through the array
+        cout << score << '\t'; 		// Output one score with each iteration 
+    return 0;
+}
+```
+
+In this context, score isn't an array index. Instead, with each iteration of the loop, it takes on the value of the current array element. The loop continues iterating, assigning the value of each subsequent array element to the score variable.
+
+Note: It's essential that the variable type in the loop matches the array's type. Otherwise, type conversion will occur.
+
+## For each loops and the auto keyword
+
+Because the variable score should have the same type as the array, this is an ideal case in which to use the auto keyword, and let C++ deduce the data type of score.
+
+### above example using `auto`:
+
+```c++
+int main()
+{
+    float testScores[5] = { 92.5, 77.0, 88.0, 93.5, 81.0 };
+    for (auto score : testScores) 	// iterate through the array
+        cout << score << '\t'; 		// Output one score with each iteration 
+}
+```
+
+## For Each Loops and References:
+
+In the for-each examples provided, element declarations are made by value. This approach means that the loop copies each array value into the variable score during every iteration. Such copying can be computationally expensive, especially when we typically just want a reference to the original element. The solution is to use references.
+
+```c++
+int main()
+{
+    float testScores[5] = { 92.5, 77.0, 88.0, 93.5, 81.0 };
+    for (auto &score : testScores) 	// iterate through the array
+        cout << score << '\t'; 		// Output one score with each iteration 
+}
+```
+
+With this approach, each output value references the original array element without making any copies.
+
+Note: Modifying the variable score will reflect changes in the original array.
+
+For those cases when you don't want to alter the array's values, you can make the variable score constant:
+
+```c++
+
+int main()
+{
+    float testScores[5] = { 92.5, 77.0, 88.0, 93.5, 81.0 };
+    for (const auto &score : testScores) 	// iterate through the array
+        cout << score << '\t'; 	// Output one score with each iteration 
+}
+```
+
+## Rule:
+
+In for-each loops, if the variable is of type struct or class (i.e., not basic data types like int, float, char, etc.), always utilize references or const references. This is crucial for performance optimization.
+
+## For-each loop with 2-dimensional array
+
+This code demonstrates how to use a range-based for loop (often referred to as a for-each loop) to iterate through a 2-dimensional array.
+
+```c++
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    const int ROWS = 2;
+    const int COLS = 5;
+
+    int twoDArray[ROWS][COLS] = { {1, 2, 3, 4, 5 }, {6, 7, 8, 9, 10} };
+
+    for (auto& array1 : twoDArray)
+    {
+        for (auto& numbers : array1)
+        {
+            cout << numbers << '\t';
+        }
+        cout << endl;
+    }
+    return 0;
+}
+```
+
+## For-each loop with STL list
+
+The code below demonstrates two methods of iterating through an STL list container. The first method uses a traditional iterator, while the second method utilizes the for-each loop.
+
+```c++
+
+#include <iostream>
+#include <string>
+#include <list>
+using namespace std;	
+
+int main()
+{
+	list<int> numbers { 1,2,3,4,5 };
+
+	// Using traditional iterator
+	for (list<int>::iterator it = numbers.begin(); it != numbers.end(); it++)
+	{
+		cout << *it << endl;
+	}
+	
+	// Using range-based for loop
+	for (auto value : numbers)
+	{
+		cout << value << endl;
+	}
+
+	return 0;
+}
+```
 
 
 
-
+In the first iteration method, a typical iterator ("it") is utilized to navigate from the beginning to the end of the list. The iterator dereferences the current element using "*it". In contrast, the for-each loop offers a more concise and readable approach by automatically deducing the type of elements in the list and providing direct access to the values.
 
 
 
