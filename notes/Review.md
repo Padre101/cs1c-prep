@@ -477,6 +477,11 @@ The for-each loop allows for swift access to array elements without the need for
 1. Enhances code readability.
 2. Minimizes the risk of programming errors.
 
+### Difference between traditional for loop and range based(for-each loop)
+Traditional for loop: You control the initialization, condition, and iteration step. This means you can iterate in any way you want—forward, backward, every other element, etc.
+
+Range-based for loop: It's used to iterate over every element in a container or an array, from the beginning to the end, in a straightforward manner. It abstracts the process of accessing and iterating through the elements.
+
 #### Syntax
 The general format is: `variable : array`
 
