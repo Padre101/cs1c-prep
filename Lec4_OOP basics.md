@@ -232,22 +232,32 @@ ClassName obj(arg1_value, arg2_value);
 ## Destructor
 Destructors are special member functions in C++ that are responsible for cleaning up resources allocated by an object when it goes out of scope or is explicitly destroyed. They are opposite to constructors, which initialize the object's state.
 
-The syntax for a destructor is exactly the same as a constructor, but their’s is a tilde(~) before the name.
+### Syntax
 
+The syntax for a destructor is similar to a constructor, but there is a tilde (~) before the name.
 
-1. Their functions without a return type
-2. A class can only have one destructor
-3. They take no parameters: ()
- *Invoked just means “to call”*
-4. The destructor is automatically invoked when the object goes out of scope.
+```c++
+~ClassName()
+```
 
-*When an object is out of scope that means it’s braces end*
+### properties
 
+They are functions without a return type.
+A class can only have one destructor.
+They take no parameters (()).
+The destructor is automatically invoked when the object goes out of scope.
+When an object goes out of scope, that means its braces end.
 
+### notes
 Once the destructor is executed, the object's lifetime has ended, and it is considered destroyed. Attempting to use the object after its destructor has been called would result in undefined behavior.
+If you don't create a destructor, the C++ compiler will generate a default one for you. This default destructor won't perform any custom resource cleanup.
+If your class does not allocate dynamic resources like memory, the destructor can be left empty.
+If you have dynamically allocated memory using new, you would use delete in the destructor to free that memory.
 
-## summary I literally made of destructors, in my own words
+### summary I literally made of destructors, in my own words
 Destructors are special functions that clean up resources used when making an object. A class can only have one destructor.  When an object goes out of scope(its braces end) the destructor will be automatically executed. When a destructor executes on an object, it can no longer be used since its lifetime(same as scope?) has ended and its considered deleted. If you have multiple objects from the same class, each object will have its own destructor(which has the same implementation as the one you defined) associated with it. If you don't create a destructor the c++ compiler will make one for you and will function the same as above. 
+
+If the class doesn't allocate any dynamic resources, the destructor body can be empty. If you've used new, you'll use delete here to free up the memory.
 
 for example:
 
@@ -262,20 +272,20 @@ public:
 
     // Destructor
     ~Example() {
-        // Cleanup code
+        // Cleanup code, if any
+        // If you allocated memory using new, use delete here
     }
 };
+
 int main() {
     {
         Example obj;  // Object of the Example class
-
         // Use obj...
-    }  // obj goes out of scope, destructor automatically executed
-
-    // ...
+    }  // obj goes out of scope, destructor automatically called
 
     return 0;
 }
+
 ```
 
 # encapsulation
