@@ -145,25 +145,62 @@ For ex.
 
 class Example {
 private:
-    int num;
+    int num;  
     float value;
     std::string name;
 
 public:
-    // Default constructor is implicitly provided
+    // Default constructor is implicitly provided  , it just mean int num is: "int num;"
     // No need to explicitly define it
+
 };
 
 int main() {
     Example example;  // Object of the Example class
 
     // Values of data members after default initialization:
-    // num is 0. value is 0.0. name is "" (empty string)
+    // num is 0arbage, value is garbage value. name is "" (garbage value)
 
     // ...
     return 0;
 }
 ```
+
+### Example utilizing a constructot manually (yout just initialzing the values)
+```c++
+
+class Example {
+private:
+    int num;  
+    float value;
+    std::string name;
+
+public:
+    // constructor
+ Example() {
+        num = 0;
+        value = 0.0;
+        name = "";
+    } 
+
+};
+
+int main() {
+    Example example;  // Object of the Example class
+
+    // Values of data members after constructor
+    // num is 0, value is 0. name is "" (empty)
+
+    // ...
+    return 0;
+}
+```
+
+### i don't know exactly why yet, but using a constructor is better than literally initializing the values to 0 in the beginning
+### Initialization at Declaration vs Constructors(this is why)
+Both approaches have their merits, but constructors become increasingly useful as your class grows in complexity. For instance, constructors can contain logic to set initial values conditionally, something you can't do with simple member initializers.
+Constructors are essential when you have class attributes that must be initialized via function calls or complex logic.
+
 ## initialization list(part of a constructor)
 
 The initialization list initializes attributes when an object is created from a class. This is because the initialization list is part of the constructor of the class, and the constructor is invoked when an object is instantiated. In this process, the initialization list provides the initial values for the attributes, setting up the initial state of the object.
