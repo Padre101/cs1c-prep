@@ -36,6 +36,97 @@ And when you want to use it in like another .cpp you do #include [headerfile nam
 
 //////// end of header files ////////////:
 
+
+ ## Scope Resolution Operator and HeaderFile Example
+
+It deals with the methods of the class, not the class don't confuse that.
+
+The Scope Resolution Operator ("ClassName::MethodName") notation is used when defining/implementing a class's member function outside of its declaration. It tells the compiler that you're providing the implementation for the `MethodName` of the `ClassName` class. This notation ensures clarity and prevents ambiguity, especially when multiple classes have methods with the same name.
+
+### Purpose of Scope Resolution Operator (::):
+- Clearly indicate which class's method or constructor you're implementing.
+- Dont confuse it with class, you use sro for methods of the class not the class
+
+How to read the notation:
+
+1. For Methods:
+   Format: ReturnType ClassName::MethodName
+   Interpretation: "Implementing the MethodName method of the ClassName class, which returns ReturnType."
+
+2. For Constructors:
+   Format: ClassName::ClassName
+   Interpretation: "Implementing the constructor of the ClassName class."
+*/
+
+### How is this related to Headerfiles?
+
+You usually define your class in the header files(.h), then you implement(define) in a .cpp file aka *your defining it outside of its declaration*, which is when you use this
+
+### example of how to use scope resolution operator with 1. using a constructor and 2. using a method. 
+
+I need two examples to understand because I can't just add a return type to the constructor example because that would make it a method, which is what I wanted, but a method can't have the same name as it's class, that's a constructor.
+
+#### 1. If you were implementing a constructor and wanted to define/implement it in the same spot you declare it, you normally do something like this(you don't need the scope resolution operator here): 
+
+//Let's say this is Box.h(because you usually only define here in headerfiles, but we are also implementing the method in this example), you would probably do this, which is the "normal way"
+
+```c++
+class Box {
+    int length;
+    int width;
+public:
+    Box(int l, int w);  // This is a declaration of the constructor(the method were focusing on)
+};
+```
+
+#### If you were implementing a method, outside of where it was defined you would use the scope resolution operator
+
+This is the header file(only declaring this time).
+When we declare, that means were just not using the braces(which is whats defining/implementing a function)
+```c++
+//
+#ifndef BOX_H  // Header guard to prevent double inclusion
+#define BOX_H
+
+class Box {
+    int length;
+    int width;
+public:
+    Box(int l, int w);  // Declaration of the constructor
+    // Additional public member function declarations would go here
+};
+
+#endif // BOX_H
+```
+
+//this is the corresponding .cpp of the header file(where you implement/define the method). Here you have to use the scope resolution operator because you implementing a method that's outside of its main
+
+```c++
+// Box.cpp
+#include "Box.h"
+
+Box::Box(int l, int w)  //this is telling the compiler your "implementing a method named box of the box class, which returns nothing"
+{
+    length = l;  // assignment
+    width = w;   // assignment
+}
+```
+
+**recall:
+How to read the scope operator notation on methods:
+1. For Methods:
+   Format: ReturnType ClassName::MethodName
+   Interpretation: "Implementing the MethodName method of the ClassName class, which returns ReturnType."
+
+2. For Constructors:
+   Format: ClassName::ClassName
+   Interpretation: "Implementing the constructor of the ClassName class."
+
+#### 2. If you were implementing a method, and wanted to define/implement it in the same spot you declare it, you normally do something like this(you don't need the scope resolution operator here): 
+
+//Let's say this is Box.h (because you usually only declare here in header files, but we are also implementing the method in this example):
+
+
 # Chrono Explained
 
 > #include <chrono>  // include the chrono library for measuring time
