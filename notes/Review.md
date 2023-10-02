@@ -1,12 +1,13 @@
 # Table of Contents
 1. [Header Files](#header-files)
-2. [Chrono Explained](#chrono-explained)
-3. [Pointer's and Dynamic Arrays](#pointers-and-dynamic-arrays)
-4. [Pointer's and Array's](#pointers-and-arrays)
-5. [C++ Text Files](#c++-text-files)
-6. [new and delete operator](#new-and-delete-operator)
-7. [Dynamoic Memory Allocation](#dynamic-memory-allocation)
-8. [Review Notes in class](#review-notes-in-class)
+2. [Initialization List](#initialization-list)
+3. [Chrono Explained](#chrono-explained)
+4. [Pointer's and Dynamic Arrays](#pointers-and-dynamic-arrays)
+5. [Pointer's and Array's](#pointers-and-arrays)
+6. [C++ Text Files](#c++-text-files)
+7. [new and delete operator](#new-and-delete-operator)
+8. [Dynamic Memory Allocation](#dynamic-memory-allocation)
+9. [Review Notes in class](#review-notes-in-class)
 
 
 # Header Files
