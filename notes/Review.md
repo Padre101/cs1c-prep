@@ -122,10 +122,170 @@ How to read the scope operator notation on methods:
    Format: ClassName::ClassName
    Interpretation: "Implementing the constructor of the ClassName class."
 
-#### 2. If you were implementing a method, and wanted to define/implement it in the same spot you declare it, you normally do something like this(you don't need the scope resolution operator here): 
+#### 2. If you were implementing a method and wanted to define/implement it in the same spot you declare it, you normally do something like this(you don't need the scope resolution operator here): 
 
 //Let's say this is Box.h (because you usually only declare here in header files, but we are also implementing the method in this example):
 
+```c++
+class Box {
+    int length;
+    int width;
+public:
+    Box(int l, int w);               // This is a declaration of the constructor
+    double calculateArea() const;    // This is a declaration of the method we're focusing on
+};
+
+```
+
+If you were implementing a method outside of where it was declared, you would use the scope resolution operator:
+This is the header file (only declaring this time).
+When we declare, that means we're just not using the braces (which is what's defining/implementing a function):
+```c++
+#ifndef BOX_H  // Header guard to prevent double inclusion
+#define BOX_H
+
+class Box {
+    int length;
+    int width;
+public:
+    Box(int l, int w);               // Declaration of the constructor
+    double calculateArea() const;    // Declaration of the method
+};
+
+#endif // BOX_H
+
+```
+
+This is the corresponding .cpp of the header file (where you implement/define the method). Here you have to use the scope resolution operator because you're implementing a method that's outside of its declaration:
+
+```c++
+// Box.cpp
+#include "Box.h"
+
+Box::Box(int l, int w) 
+{
+    length = l;  // assignment
+    width = w;   // assignment
+}
+
+//this is what were focsuing on
+double Box::calculateArea() const  // This is telling the compiler you're "implementing the calculateArea method of the Box class, which returns a double." 
+{
+    return static_cast<double>(length * width);
+}
+
+```
+
+*How to read the scope operator notation:
+For Methods:
+Format: ReturnType ClassName::MethodName
+Interpretation: "Implementing the MethodName method of the ClassName class, which returns ReturnType."
+
+For Constructors:
+Format: ClassName::ClassName
+Interpretation: "Implementing the constructor of the ClassName class."
+
+With these two scenarios, you can clearly see the distinction between implementing a constructor and a method using the scope resolution operator.
+
+
+# Initialization List
+
+Initialization lists in C++ are used to directly initialize member variables and base classes during the construction of an object.
+
+## Syntax for Initialization List:
+
+Constructor(parameters) : member1(value1), member2(value2), ... { 
+    // Constructor body
+}
+
+### Constructor Body {}:
+The curly braces {} after the initialization list encompass the constructor's body. While the initialization list directly initializes member variables, the constructor body allows for additional operations or logic if needed.
+
+If you're only initializing variables via the initialization list, you can leave the constructor body empty.
+However, any additional setup, checks, or operations that need to be executed during object construction should be placed within these braces.
+
+## Using Initialization List During Declaration
+
+```c++
+class Box {
+    int length;
+    int width;
+public:
+    Box(int l, int w) : length(l), width(w) {}  // Using initialization list, empty constructor body
+};
+```
+
+
+## Without Using Initialization List During Declaration(normal way)
+
+```c++
+class Box {
+    int length;
+    int width;
+public:
+    Box(int l, int w) {
+        length = l;  // assignment
+        width = w;   // assignment
+    }
+};
+```
+
+## Using Initialization List with Separate Declaration and Definition
+
+//this is a header file
+```c++
+#ifndef BOX_H
+#define BOX_H
+
+class Box {
+    int length;
+    int width;
+public:
+    Box(int l, int w);
+};
+
+#endif // BOX_H
+```
+
+//corresponding .cpp file
+
+```c++
+#include "Box.h"
+
+Box::Box(int l, int w) : length(l), width(w)  // Using initialization list
+{
+    // Constructor body (can be empty if no additional logic is needed)
+}
+```
+
+## Without Using Initialization List with Separate Declaration and Definition
+
+//this is a header file
+```c++
+#ifndef BOX_H
+#define BOX_H
+
+class Box {
+    int length;
+    int width;
+public:
+    Box(int l, int w);
+};
+
+#endif // BOX_H
+```
+
+//corresponding .cpp file
+```c++
+#include "Box.h"
+
+Box::Box(int l, int w) {
+    length = l;  // assignment
+    width = w;   // assignment
+}
+```
+
+With these examples, we can see that the initialization list provides a direct method to initialize member variables, while the constructor body (within the {}) offers a place for any additional setup or logic needed during object construction.
 
 # Chrono Explained
 
