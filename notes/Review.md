@@ -1,14 +1,15 @@
+
 # Table of Contents
 1. [Header Files](#header-files)
-2. [Initialization List](#initialization-list)
-3. [Chrono Explained](#chrono-explained)
-4. [Pointer's and Dynamic Arrays](#pointers-and-dynamic-arrays)
-5. [Pointer's and Array's](#pointers-and-arrays)
-6. [C++ Text Files](#c++-text-files)
-7. [new and delete operator](#new-and-delete-operator)
-8. [Dynamic Memory Allocation](#dynamic-memory-allocation)
-9. [Review Notes in class](#review-notes-in-class)
-
+2. [Base Class Specifier](#base-class-specifier)
+3. [Initialization List](#initialization-list)
+4. [Chrono Explained](#chrono-explained)
+5. [Pointer's and Dynamic Arrays](#pointers-and-dynamic-arrays)
+6. [Pointer's and Array's](#pointers-and-arrays)
+7. [C++ Text Files](#c++-text-files)
+8. [new and delete operator](#new-and-delete-operator)
+9. [Dynamic Memory Allocation](#dynamic-memory-allocation)
+10. [Review Notes in class](#review-notes-in-class)
 
 # Header Files
 
@@ -186,8 +187,71 @@ For Constructors:
 Format: ClassName::ClassName
 Interpretation: "Implementing the constructor of the ClassName class."
 
-With these two scenarios, you can clearly see the distinction between implementing a constructor and a method using the scope resolution operator.
+With these two scenarios, you can see the distinction between implementing a constructor and a method using the scope resolution operator.
 
+# Base Class specifier
+
+## This is used to create a derived class from a base class.
+
+This means it indicates that one class (the derived class) is inheriting attributes and behaviors(methods) from another class (the base class).
+
+## syntax
+
+access specifier can be public, private, or protected
+
+```c++
+ class DerivedName : access-specifier Basename  //This means DerivedName is a derived class, that inherits from the base class
+```
+
+## Base Class Specifier vs Scope Resolution Operator
+The scope resolution operator (::) is used when you are implementing/accessing a **class member**(not a class), outside of its class declaration(somewhere else from where you defined it). For example, if you define a class in a header file, but implement its methods in a respective .cpp file
+
+The Base Class Specifier (:) is used when you want a class to inherit attributes/methods from another class(base).
+
+## Base Class Specifier example
+```c++
+class Shape {  //base class
+
+//private by default, so make public(usually for methods)
+public:
+	Shape() {
+
+	};
+
+	~Shape() {
+
+	};
+
+	virtual double calcArea() = 0; //format for Pure virtual for the base class, no implemntation and equal to 0
+
+
+};
+
+
+class Circle : public Shape {  //circle is a derived class inheriting from base class
+
+private: 
+
+	double radius = 0;
+
+public:  
+
+	Circle(double radius) {    
+
+	};
+
+	~Circle(){ 
+
+	}
+
+  double calcArea() override {
+
+    return 0.0;
+    
+	};
+
+};
+```
 
 # Initialization List
 
