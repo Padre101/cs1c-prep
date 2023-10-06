@@ -396,7 +396,89 @@ The primary idea behind polymorphism is that it allows you to use a single *inte
 
 ### 3. Virtual Functions
 
+Virtual functions are where the magic of polymorphism happens in C++. They allow a single interface (provided by the base class) to represent different implementations for different objects (provided by derived classes). A virtual function is first declared in the base class and can be redefined (overridden) in the derived class. If a virtual function in the base class has no implementation and is specifically declared with = 0, then it's considered a pure virtual function.
+
 These play a crucial role in achieving run-time polymorphism in C++. When you declare a function as **virtual** in a base class, the compiler does not bind that function with an address until runtime. Therefore, when a derived class provides its version of that function, the compiler uses the derived class's function instead of the base class's function.
+
+#### syntax of virtual function
+
+
+```c++
+// Base class representing generic animals
+class Animal {
+public:
+    // This provides a default implementation but can be overridden by derived classes
+    virtual void makeSound() { // Declare a virtual function 'makeSound',  // virtual void makeSound() = 0; would make it pure
+        cout << "Some generic animal sound" << endl;
+    }
+};
+
+// Derived class specifically for dogs
+class Dog : public Animal {  // 'public Animal' means Dog inherits from Animal
+public:
+    void makeSound() override {  // Override the 'makeSound' function for the Dog class, will be used when we call makeSound on a Dog object
+        cout << "Woof!" << endl;
+    }
+};
+
+// Derived class specifically for cats
+class Cat : public Animal {  // 'public Animal' means Cat inherits from Animal
+public:
+    void makeSound() override { // Override the 'makeSound' function for the Cat class
+        cout << "Meow!" << endl;
+    }
+};
+
+// Note: Using the 'override' keyword is optional but recommended.
+// It tells the compiler that the function is intended to override a virtual function in a base class.
+// If no such function exists in the base class, the compiler will throw an error.
+
+
+```
+
+in main() here is how you would implement it and use it:
+
+```c++
+#include <iostream>
+
+// [Include the class definitions here or link the header files]
+using namespace std;
+
+int main() {
+   
+   // Declaration and instantiation of objects (instantiate means create an object)
+    Dog myDog;
+    Cat myCat;
+
+    // Directly using the classes, normal way 
+    myDog.makeSound();   // Outputs: Woof!
+    myCat.makeSound();   // Outputs: Meow!
+
+    // Using polymorphism with pointers
+    Animal* animalPtr = &myDog;
+    animalPtr->makeSound();  // Outputs: Woof!
+
+    animalPtr = &myCat;
+    animalPtr->makeSound();  // Outputs: Meow!
+
+    // Using polymorphism with dynamic allocation
+    Animal* dynAnimal = new Dog();
+    dynAnimal->makeSound();  // Outputs: Woof!
+
+    delete dynAnimal;  // Remember to delete dynamic memory!
+
+    dynAnimal = new Cat();
+    dynAnimal->makeSound();  // Outputs: Meow!
+    
+    delete dynAnimal;  // Remember to delete dynamic memory!
+
+    return 0;
+}
+
+```
+
+In the provided example, the draw function in the base class Shape is declared as virtual, indicating that derived classes like Circle can provide their own version of this function. The keyword override in the derived class is optional but recommended to ensure that the function truly overrides a base class function.
+
 
 ### 4. Benefits
 
