@@ -3,13 +3,15 @@
 1. [Header Files](#header-files)
 2. [Base Class Specifier](#base-class-specifier)
 3. [Initialization List](#initialization-list)
-4. [Chrono Explained](#chrono-explained)
-5. [Pointer's and Dynamic Arrays](#pointers-and-dynamic-arrays)
-6. [Pointer's and Array's](#pointers-and-arrays)
-7. [C++ Text Files](#c++-text-files)
-8. [new and delete operator](#new-and-delete-operator)
-9. [Dynamic Memory Allocation](#dynamic-memory-allocation)
-10. [Review Notes in class](#review-notes-in-class)
+4. [Polymorphism](#polymorphism)
+5. [Chrono Explained](#chrono-explained)
+6. [Pointer's and Dynamic Arrays](#pointers-and-dynamic-arrays)
+7. [Pointer's and Array's](#pointers-and-arrays)
+8. [C++ Text Files](#c++-text-files)
+9. [new and delete operator](#new-and-delete-operator)
+10. [Dynamic Memory Allocation](#dynamic-memory-allocation)
+11. [Review Notes in class](#review-notes-in-class)
+
 
 # Header Files
 
@@ -358,23 +360,69 @@ Polymorphism comes from the Greek words "poly" (many) and "morph" (shape or form
 
 ## key concepts:
 
-1. One Interface, Multiple Methods
+### 1. One Interface, Multiple Methods
    
 The primary idea behind polymorphism is that it allows you to use a single *interface* to represent different types of data (or objects). For example, if you have different shapes like circles, triangles, and rectangles, you can have a generic method like draw() for all these shapes. Even though the actual implementation of draw() would differ for each shape, you can call draw() on any shape, and the correct method will be invoked.
 
 *Note on Interface: An interface is a common method (or set of methods) that various objects have in common, though each object may have its own unique implementation. For instance, while all dogs might have a bark() method, each breed or individual dog might produce a distinct sound. Similarly, every animal might have an eat() method, but the way a bird eats can be different from how a lion does.* 
 
-2. Compile-Time vs. Run-Time Polymorphism
+### 2. Compile-Time vs. Run-Time Polymorphism
+
 **Compile-Time Polymorphism** (also known as **Static Polymorphism**): This occurs at compile time and is typically achieved through function overloading or operator overloading.
-**Run-Time Polymorphism** (also known as **Dynamic Polymorphism**): This occurs at runtime and is where the true power of polymorphism shines. It's achieved using inheritance and virtual functions. When you have a base class pointer pointing to a derived class object, and you call a virtual function using that pointer, the derived class's function gets called. This decision of which function to call is made at runtime. An example of this is the assignment "HW6A," which showcases run-time polymorphism via virtual functions.
+**Run-Time Polymorphism** (also known as **Dynamic Polymorphism**): This occurs at runtime and is where the true power of polymorphism shines. It's achieved using inheritance and virtual functions. When you have a base class pointer pointing to a derived class object, and you call a virtual function using that pointer, the derived class's function gets called. This decision of which function to call is made at runtime. An example of this is the assignment "HW6A," in CS1C which showcases run-time polymorphism via virtual functions.
 
-### one interface, multiple methods:
+### 3. Virtual Functions
 
+These play a crucial role in achieving run-time polymorphism in C++. When you declare a function as **virtual** in a base class, the compiler does not bind that function with an address until runtime. Therefore, when a derived class provides its version of that function, the compiler uses the derived class's function instead of the base class's function.
 
-### Compile-Time vs. Run-Time Polymorphism:
+### 4. Benefits
+
+**Flexibility:** You can add new classes or modify existing ones without changing other parts of your code. For example, if you add a new shape, you only need to provide its specific implementation of *draw()*. The code that calls *draw()* on different shapes doesn't need to change.
+**Reusability**: Base class methods can be reused in derived classes.
+**Extensibility:** It's easy to add new derived classes without modifying existing functionality.
+
 
 ## simple example
+Imagine a base class **Shape** and two derived classes **Circle** and **Rectangle**.
 
+```c++
+class Shape {
+public:
+    virtual void draw() {
+        cout << "Drawing Shape" << endl;
+    }
+};
+
+class Circle : public Shape {  //base class specifier
+public:
+    void draw() override {
+        cout << "Drawing Circle" << endl;
+    }
+};
+
+class Rectangle : public Shape {  //base class specifier
+public:
+    void draw() override {
+        cout << "Drawing Rectangle" << endl;
+    }
+};
+
+```
+
+Here's how you can see polymorphism in action:
+
+```c++
+Shape* shape = new Circle();
+shape->draw();  // Outputs: Drawing Circle
+
+shape = new Rectangle();
+shape->draw();  // Outputs: Drawing Rectangle
+
+```
+
+Even though the type of the pointer **shape** is a pointer to **Shape**, it calls the correct **draw** method based on the actual object it points to.
+
+In essence, polymorphism allows for a more general and abstract way to work with different data types, promoting code reusability and flexibility.
 
 
 # Chrono Explained
