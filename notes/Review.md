@@ -193,17 +193,40 @@ With these two scenarios, you can see the distinction between implementing a con
 
 # Base Class specifier and Inheritance
 
-## This is used to create a derived class from a base class through inheritance. Inheritance is achieved using base class specifier
+## This is used to create a derived class from a base class through inheritance. Inheritance is achieved using a base class specifier
 
 This means it indicates that one class (the derived class) is inheriting attributes and behaviors(methods) from another class (the base class).
 
 ## syntax
 
-access specifier can be public, private, or protected
+the access specifier part in the syntax can be public, private, or protected
 
 ```c++
  class DerivedName : access-specifier Basename  //This means DerivedName is a derived class, that inherits from the base class
 ```
+
+## Access Specifier part in Inheritance/base class specifier syntax
+
+When inheriting from a base class, the access specifier determines how the base class's members(attributes and methods) will be accessible in the derived class:
+
+### 1. public inheritance:
+
+**public** members of the base class become **public members** of the derived class.
+**protected** members of the base class become **protected members** of the derived class.
+**private** members of the base class are not accessible directly from the derived class, but they are still inherited.
+
+### 2. protected inheritance:
+
+**public** members of the base class become **protected members** of the derived class.
+**protected** members of the base class remain **protected** in the derived class.
+**private** members of the base class are not accessible directly from the derived class, but they are still inherited.
+
+### 3. private inheritance:
+
+Both **public and protected** members of the base class become **private members** of the derived class.
+private members of the base class are not accessible from the derived class, but they are still inherited.
+
+In most cases, like in HW6A, public inheritance is used because it represents an "is-a" relationship between the base and derived class. For example, a Circle is a Shape.
 
 ## Base Class Specifier vs Scope Resolution Operator
 The scope resolution operator (::) is used when you are implementing/accessing a **class member**(not a class), outside of its class declaration(somewhere else from where you defined it). For example, if you define a class in a header file, but implement its methods in a respective .cpp file
