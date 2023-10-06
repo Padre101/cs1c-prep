@@ -1,7 +1,7 @@
 
 # Table of Contents
 1. [Header Files](#header-files)
-2. [Base Class Specifier](#base-class-specifier)
+2. [Base Class Specifier and Inheritance](#base-class-specifier-and-inheritance)
 3. [Initialization List](#initialization-list)
 4. [Polymorphism](#polymorphism)
 5. [Chrono Explained](#chrono-explained)
@@ -191,9 +191,9 @@ Interpretation: "Implementing the constructor of the ClassName class."
 
 With these two scenarios, you can see the distinction between implementing a constructor and a method using the scope resolution operator.
 
-# Base Class specifier
+# Base Class specifier and Inheritance
 
-## This is used to create a derived class from a base class.
+## This is used to create a derived class from a base class through inheritance. Inheritance is achieved using base class specifier
 
 This means it indicates that one class (the derived class) is inheriting attributes and behaviors(methods) from another class (the base class).
 
