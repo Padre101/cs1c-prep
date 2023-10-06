@@ -352,6 +352,21 @@ Box::Box(int l, int w) {
 
 With these examples, we can see that the initialization list provides a direct method to initialize member variables, while the constructor body (within the {}) offers a place for any additional setup or logic needed during object construction.
 
+# Polymorphism
+
+Polymorphism comes from the Greek words "poly" (many) and "morph" (shape or form). In the context of programming, it allows objects of different classes to be treated as if they are objects of the same class.
+
+## key concepts:
+
+### one interface, multiple methods:
+
+
+### Compile-Time vs. Run-Time Polymorphism:
+
+## simple example
+
+
+
 # Chrono Explained
 
 > #include <chrono>  // include the chrono library for measuring time
