@@ -358,6 +358,16 @@ Polymorphism comes from the Greek words "poly" (many) and "morph" (shape or form
 
 ## key concepts:
 
+1. One Interface, Multiple Methods
+   
+The primary idea behind polymorphism is that it allows you to use a single *interface* to represent different types of data (or objects). For example, if you have different shapes like circles, triangles, and rectangles, you can have a generic method like draw() for all these shapes. Even though the actual implementation of draw() would differ for each shape, you can call draw() on any shape, and the correct method will be invoked.
+
+*Note on Interface: An interface is a common method (or set of methods) that various objects have in common, though each object may have its own unique implementation. For instance, while all dogs might have a bark() method, each breed or individual dog might produce a distinct sound. Similarly, every animal might have an eat() method, but the way a bird eats can be different from how a lion does.* 
+
+2. Compile-Time vs. Run-Time Polymorphism
+**Compile-Time Polymorphism** (also known as **Static Polymorphism**): This occurs at compile time and is typically achieved through function overloading or operator overloading.
+**Run-Time Polymorphism** (also known as **Dynamic Polymorphism**): This occurs at runtime and is where the true power of polymorphism shines. It's achieved using inheritance and virtual functions. When you have a base class pointer pointing to a derived class object, and you call a virtual function using that pointer, the derived class's function gets called. This decision of which function to call is made at runtime. An example of this is the assignment "HW6A," which showcases run-time polymorphism via virtual functions.
+
 ### one interface, multiple methods:
 
 
