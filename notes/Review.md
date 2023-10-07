@@ -280,13 +280,14 @@ public:
 
 # Initialization List
 
-Initialization lists in C++ are used to directly initialize member variables and base classes during the construction of an object.
+Initialization lists in C++ are used to directly initialize member variables and base classes during the construction of an object. **Don't confuse it with default initialization, where you define and initialize variables to 0, that is good practice, and different from this**. Instead, initialization lists enable you to pass specific values to class members when an object is instantiated using provided parameters.
 
 ## Syntax for Initialization List:
 
-Constructor(parameters) : member1(value1), member2(value2), ... { 
+Constructor(Type1 paramName1, Type2 paramName2) : member1(paramName1), member2(paramName2), ... {
     // Constructor body
 }
+
 
 ### Constructor Body {}:
 The curly braces {} after the initialization list encompass the constructor's body. While the initialization list directly initializes member variables, the constructor body allows for additional operations or logic if needed.
