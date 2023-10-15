@@ -25,7 +25,7 @@ Header files are commonly used not only to declare functions and data types, but
 
 *the words after **bold** are called macros, in terms of names by convention their the same as the name of your .h file BUT everything is capitalized and the “.” is replaced with “_” also words are seperated by “_”*
 
-> #**ifndef** HEADER_FILE_NAME_H
+> #**ifndef** HEADER_FILE_NAME_H //you can also just use "#pragma once" instead of these 2 lines, it does the same thing
 
 > #**define** HEADER_FILE_NAME_H
 
